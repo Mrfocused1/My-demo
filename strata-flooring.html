@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRATA. | Premium Flooring Installation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#F7F5F0',
+                        obsidian: '#111111',
+                        amber: '#D97706',
+                        sand: '#E8E0D4',
+                    },
+                    fontFamily: {
+                        display: ['Bricolage Grotesque', 'sans-serif'],
+                        body: ['DM Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-cream text-obsidian">
+
+    <!-- Sticky Nav -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-cream/95 backdrop-blur-md border-b border-obsidian/5">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+            <div class="flex items-center gap-8">
+                <a href="#" class="font-display text-2xl font-bold tracking-tight">STRATA.</a>
+                <a href="index.html" class="font-mono text-xs text-obsidian/50 hover:text-amber transition-colors">&larr; Back to Demo</a>
+            </div>
+            <div class="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest">
+                <a href="#services" class="hover:text-amber transition-colors">Services</a>
+                <a href="#gallery" class="hover:text-amber transition-colors">Gallery</a>
+                <a href="#contact" class="hover:text-amber transition-colors">Contact</a>
+            </div>
+            <a href="#hero-form" class="bg-obsidian text-cream px-5 py-2.5 font-mono text-xs font-bold uppercase tracking-widest hover:bg-amber transition-colors">Get a Quote</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="min-h-screen flex pt-16">
+        <!-- Left: Image -->
+        <div class="w-full lg:w-[55%] relative">
+            <img src="flooring-hero.jpg" alt="Beautiful flooring installation" class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-obsidian/80 via-obsidian/60 to-obsidian/30"></div>
+            <div class="relative z-10 flex flex-col justify-center h-full px-8 sm:px-12 lg:px-16 py-20">
+                <p class="font-mono text-xs uppercase tracking-[0.3em] text-amber mb-6">Free Measure & Quote Included</p>
+                <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.05] mb-8">
+                    Floors That<br>Last.<br><span class="text-amber">Guaranteed.</span>
+                </h1>
+                <p class="text-white/70 text-lg max-w-md mb-10 font-body">Supply & fit specialists for tiles, hardwood, LVT, and vinyl across the region. 15 years of trusted craftsmanship.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#hero-form" class="bg-obsidian text-white px-8 py-4 font-mono text-xs font-bold uppercase tracking-widest hover:bg-amber transition-colors">Book a Measure</a>
+                    <a href="#gallery" class="border border-white text-white px-8 py-4 font-mono text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-obsidian transition-colors">View Gallery</a>
+                </div>
+            </div>
+        </div>
+        <!-- Right: Form -->
+        <div id="hero-form" class="hidden lg:flex w-[45%] bg-cream items-center justify-center px-12">
+            <div class="w-full max-w-md">
+                <h2 class="font-display text-3xl font-bold mb-2">Book Your Free Measure</h2>
+                <p class="text-obsidian/60 mb-8">No obligation. We'll come to you.</p>
+                <form class="space-y-5">
+                    <div>
+                        <label class="block font-mono text-xs uppercase tracking-widest mb-2 text-obsidian/70">Full Name</label>
+                        <input type="text" placeholder="John Smith" class="w-full px-4 py-3 bg-white border border-obsidian/10 focus:border-amber focus:outline-none transition-colors font-body">
+                    </div>
+                    <div>
+                        <label class="block font-mono text-xs uppercase tracking-widest mb-2 text-obsidian/70">Phone Number</label>
+                        <input type="tel" placeholder="07123 456 789" class="w-full px-4 py-3 bg-white border border-obsidian/10 focus:border-amber focus:outline-none transition-colors font-body">
+                    </div>
+                    <div>
+                        <label class="block font-mono text-xs uppercase tracking-widest mb-2 text-obsidian/70">Flooring Type</label>
+                        <select class="w-full px-4 py-3 bg-white border border-obsidian/10 focus:border-amber focus:outline-none transition-colors font-body text-obsidian/70">
+                            <option value="">Select flooring type...</option>
+                            <option>Tiles</option>
+                            <option>Hardwood</option>
+                            <option>LVT</option>
+                            <option>Vinyl</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-mono text-xs uppercase tracking-widest mb-2 text-obsidian/70">Message</label>
+                        <textarea rows="3" placeholder="Tell us about your project..." class="w-full px-4 py-3 bg-white border border-obsidian/10 focus:border-amber focus:outline-none transition-colors font-body resize-none"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-obsidian text-cream py-4 font-mono text-xs font-bold uppercase tracking-widest hover:bg-amber transition-colors">Request Free Measure</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <section class="bg-obsidian py-6">
+        <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <span class="font-display text-3xl font-bold text-amber">200+</span>
+                <span class="font-mono text-xs uppercase tracking-widest text-white/60">Projects<br>Completed</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="font-display text-3xl font-bold text-amber">4.9</span>
+                <span class="font-mono text-xs uppercase tracking-widest text-white/60">Star<br>Rating</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="font-display text-3xl font-bold text-amber">15</span>
+                <span class="font-mono text-xs uppercase tracking-widest text-white/60">Years<br>Trading</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <svg class="w-8 h-8 text-amber" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span class="font-mono text-xs uppercase tracking-widest text-white/60">Free<br>Measure</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-24 lg:py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="font-mono text-xs uppercase tracking-[0.3em] text-amber mb-4">What We Do</p>
+            <h2 class="font-display text-4xl lg:text-5xl font-bold mb-16">Our Services</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div class="group border border-obsidian/10 p-8 hover:border-amber transition-colors">
+                    <span class="font-display text-6xl font-bold text-obsidian/5 group-hover:text-amber/20 transition-colors">01</span>
+                    <h3 class="font-display text-xl font-bold mt-4 mb-3">Tile Installation</h3>
+                    <p class="text-obsidian/60 text-sm leading-relaxed mb-6">Porcelain, ceramic, and natural stone tiles expertly fitted to walls and floors. Precision cuts and flawless grouting.</p>
+                    <a href="#" class="font-mono text-xs uppercase tracking-widest text-amber hover:text-obsidian transition-colors">Learn More &rarr;</a>
+                </div>
+                <!-- Card 2 -->
+                <div class="group border border-obsidian/10 p-8 hover:border-amber transition-colors">
+                    <span class="font-display text-6xl font-bold text-obsidian/5 group-hover:text-amber/20 transition-colors">02</span>
+                    <h3 class="font-display text-xl font-bold mt-4 mb-3">Hardwood Flooring</h3>
+                    <p class="text-obsidian/60 text-sm leading-relaxed mb-6">Solid and engineered hardwood floors, sanded and finished on-site. Oak, walnut, maple, and more.</p>
+                    <a href="#" class="font-mono text-xs uppercase tracking-widest text-amber hover:text-obsidian transition-colors">Learn More &rarr;</a>
+                </div>
+                <!-- Card 3 -->
+                <div class="group border border-obsidian/10 p-8 hover:border-amber transition-colors">
+                    <span class="font-display text-6xl font-bold text-obsidian/5 group-hover:text-amber/20 transition-colors">03</span>
+                    <h3 class="font-display text-xl font-bold mt-4 mb-3">LVT & Vinyl</h3>
+                    <p class="text-obsidian/60 text-sm leading-relaxed mb-6">Luxury vinyl tiles and planks that combine stunning aesthetics with exceptional durability and water resistance.</p>
+                    <a href="#" class="font-mono text-xs uppercase tracking-widest text-amber hover:text-obsidian transition-colors">Learn More &rarr;</a>
+                </div>
+                <!-- Card 4 -->
+                <div class="group border border-obsidian/10 p-8 hover:border-amber transition-colors">
+                    <span class="font-display text-6xl font-bold text-obsidian/5 group-hover:text-amber/20 transition-colors">04</span>
+                    <h3 class="font-display text-xl font-bold mt-4 mb-3">Subfloor Prep</h3>
+                    <p class="text-obsidian/60 text-sm leading-relaxed mb-6">Levelling, moisture barriers, and underlay installation. The foundation every great floor needs.</p>
+                    <a href="#" class="font-mono text-xs uppercase tracking-widest text-amber hover:text-obsidian transition-colors">Learn More &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="py-24 lg:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="font-mono text-xs uppercase tracking-[0.3em] text-amber mb-4">Our Work</p>
+            <h2 class="font-display text-4xl lg:text-5xl font-bold mb-4">Project Gallery</h2>
+            <p class="text-obsidian/60 text-lg mb-16 max-w-xl">200+ completed projects across the region. From contemporary apartments to period homes.</p>
+            <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+                <div class="break-inside-avoid overflow-hidden group">
+                    <img src="flooring-tile.png" alt="Tile installation project" class="w-full object-cover group-hover:scale-105 transition-transform duration-500" style="aspect-ratio:4/3;">
+                </div>
+                <div class="break-inside-avoid overflow-hidden group">
+                    <img src="flooring-fit.png" alt="Floor fitting project" class="w-full object-cover group-hover:scale-105 transition-transform duration-500" style="aspect-ratio:3/4;">
+                </div>
+                <div class="break-inside-avoid overflow-hidden group">
+                    <img src="flooring-tile.png" alt="Modern tile work" class="w-full object-cover object-bottom group-hover:scale-105 transition-transform duration-500" style="aspect-ratio:1/1;">
+                </div>
+                <div class="break-inside-avoid overflow-hidden group">
+                    <img src="flooring-fit.png" alt="Hardwood installation" class="w-full object-cover object-center group-hover:scale-105 transition-transform duration-500" style="aspect-ratio:4/5;">
+                </div>
+                <div class="break-inside-avoid overflow-hidden group">
+                    <img src="flooring-tile.png" alt="Kitchen floor tiling" class="w-full object-cover object-right group-hover:scale-105 transition-transform duration-500" style="aspect-ratio:16/9;">
+                </div>
+                <div class="break-inside-avoid overflow-hidden group">
+                    <img src="flooring-fit.png" alt="LVT flooring project" class="w-full object-cover object-left group-hover:scale-105 transition-transform duration-500" style="aspect-ratio:3/4;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-24 lg:py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="font-mono text-xs uppercase tracking-[0.3em] text-amber mb-4">Why STRATA.</p>
+            <h2 class="font-display text-4xl lg:text-5xl font-bold mb-16">Why Choose Us</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div>
+                    <div class="w-14 h-14 bg-amber/10 flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-amber" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"/></svg>
+                    </div>
+                    <h3 class="font-display text-xl font-bold mb-3">Supply & Fit</h3>
+                    <p class="text-obsidian/60 leading-relaxed">We source and lay your flooring. One point of contact, one invoice, zero hassle. Trade-price materials passed on to you.</p>
+                </div>
+                <div>
+                    <div class="w-14 h-14 bg-amber/10 flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-amber" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+                    </div>
+                    <h3 class="font-display text-xl font-bold mb-3">Fully Guaranteed</h3>
+                    <p class="text-obsidian/60 leading-relaxed">10-year workmanship guarantee on every installation. We stand behind our work because we know it lasts.</p>
+                </div>
+                <div>
+                    <div class="w-14 h-14 bg-amber/10 flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-amber" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+                    </div>
+                    <h3 class="font-display text-xl font-bold mb-3">Free Home Measure</h3>
+                    <p class="text-obsidian/60 leading-relaxed">No-obligation home visit to measure up, discuss options, and provide a fixed-price quote. Completely free.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 lg:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="font-mono text-xs uppercase tracking-[0.3em] text-amber mb-4">Testimonials</p>
+            <h2 class="font-display text-4xl lg:text-5xl font-bold mb-16">What Our Clients Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="border border-obsidian/10 p-8 lg:p-10">
+                    <div class="flex gap-1 mb-6">
+                        <svg class="w-5 h-5 text-amber" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-amber" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-amber" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-amber" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-amber" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="text-lg leading-relaxed text-obsidian/80 mb-8">"Absolutely brilliant job on our kitchen and hallway tiles. The team were punctual, tidy, and the finish is flawless. We've had so many compliments from visitors. Wouldn't hesitate to recommend STRATA."</p>
+                    <div>
+                        <p class="font-display font-bold">Sarah Mitchell</p>
+                        <p class="text-obsidian/50 text-sm">Homeowner, Leeds</p>
+                    </div>
+                </div>
+                <div class="border border-obsidian/10 p-8 lg:p-10">
+                    <div class="flex gap-1 mb-6">
+                        <svg class="w-5 h-5 text-amber" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-amber" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-amber" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-amber" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-amber" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="text-lg leading-relaxed text-obsidian/80 mb-8">"Had engineered oak laid throughout our ground floor. The subfloor prep they did was thorough, and the final result looks incredible. Professional from start to finish. Five stars all round."</p>
+                    <div>
+                        <p class="font-display font-bold">David & Claire Thornton</p>
+                        <p class="text-obsidian/50 text-sm">Homeowners, Harrogate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 lg:py-32 bg-sand/50">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <p class="font-mono text-xs uppercase tracking-[0.3em] text-amber mb-4">Let's Get Started</p>
+            <h2 class="font-display text-4xl lg:text-5xl font-bold mb-6">Ready to Transform<br>Your Floors?</h2>
+            <p class="text-obsidian/60 text-lg mb-10 max-w-xl mx-auto">Book a free home measure today. No obligation, no pressure &mdash; just honest advice and a fixed-price quote.</p>
+            <a href="#hero-form" class="inline-block bg-obsidian text-cream px-10 py-4 font-mono text-xs font-bold uppercase tracking-widest hover:bg-amber transition-colors">Book a Free Measure</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-obsidian text-white py-16 lg:py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="md:col-span-2">
+                    <a href="#" class="font-display text-3xl font-bold tracking-tight">STRATA.</a>
+                    <p class="text-white/50 mt-4 max-w-sm leading-relaxed">Premium flooring installation across Yorkshire. Supply & fit specialists with 15 years of trusted craftsmanship.</p>
+                </div>
+                <div>
+                    <h4 class="font-mono text-xs uppercase tracking-widest text-white/40 mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-white/70 text-sm">
+                        <li><a href="#services" class="hover:text-amber transition-colors">Services</a></li>
+                        <li><a href="#gallery" class="hover:text-amber transition-colors">Gallery</a></li>
+                        <li><a href="#hero-form" class="hover:text-amber transition-colors">Get a Quote</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-mono text-xs uppercase tracking-widest text-white/40 mb-6">Contact</h4>
+                    <ul class="space-y-3 text-white/70 text-sm">
+                        <li>0113 456 7890</li>
+                        <li>hello@strataflooring.co.uk</li>
+                        <li>Mon&ndash;Fri: 8am &ndash; 6pm</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-white/30 text-sm font-mono">&copy; 2026 STRATA. All rights reserved.</p>
+                <p class="text-white/30 text-xs font-mono">This is a demo website &mdash; not a real business.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
