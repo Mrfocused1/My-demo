@@ -7,6 +7,7 @@
     { "source": "/pricing", "destination": "/pricing.html" },
     { "source": "/strata-flooring", "destination": "/strata-flooring.html" },
     { "source": "/flow-plumbing", "destination": "/flow-plumbing.html" },
-    { "source": "/aqua-pool", "destination": "/aqua-pool.html" }
+    { "source": "/aqua-pool", "destination": "/aqua-pool.html" },
+    { "source": "/qualityhandymanservices", "destination": "/quality-handyman-services.html" }
   ]
 }
