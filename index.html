@@ -768,71 +768,65 @@
     </section>
 
     <!-- SECTION 5: HOW IT WORKS -->
-    <section class="py-32 bg-surface relative border-b border-obsidian/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-20 items-center">
-                <div class="step-text">
+    <section class="bg-obsidian relative overflow-hidden grid-bg-dark border-b-2 border-white/5">
+        <!-- Header -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 border-b border-white/10">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                <div>
                     <span class="font-mono text-xs font-bold text-accent tracking-widest uppercase block mb-4">[ How It Works ]</span>
-                    <h2 class="font-display text-4xl md:text-5xl font-bold text-obsidian mb-8">Up and running in days, not months.</h2>
-                    <p class="text-stone text-sm mb-12">Getting a website shouldn't be complicated. Here's all you need to do — we handle everything else.</p>
+                    <h2 class="font-display text-5xl md:text-6xl font-bold text-white leading-none">Up and running<br>in days, not months.</h2>
+                </div>
+                <p class="text-white/40 text-sm max-w-xs leading-relaxed md:text-right">Getting a website shouldn't be complicated. Here's all you need to do — we handle everything else.</p>
+            </div>
+        </div>
 
-                    <div class="space-y-6">
+        <!-- Steps -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/10">
 
-                        <div class="flex gap-6 group step-item border-l border-obsidian/10 pl-6 relative">
-                            <div class="absolute -left-[5px] top-0 w-2 h-2 rounded-full bg-obsidian group-hover:bg-accent transition-colors"></div>
-                            <div>
-                                <h4 class="font-bold text-obsidian mb-2 font-display text-xl">1. Pick Your Style</h4>
-                                <p class="text-sm text-stone/70">Browse our examples and tell us which look and feel suits your business.</p>
-                            </div>
-                        </div>
-
-                        <div class="flex gap-6 group step-item border-l border-obsidian/10 pl-6 relative">
-                            <div class="absolute -left-[5px] top-0 w-2 h-2 rounded-full bg-obsidian/20 group-hover:bg-accent transition-colors"></div>
-                            <div>
-                                <h4 class="font-bold text-obsidian mb-2 font-display text-xl">2. Send Us Your Details</h4>
-                                <p class="text-sm text-stone/70">Just your business name, photos, and the info you want on the site. We do the rest.</p>
-                            </div>
-                        </div>
-
-                        <div class="flex gap-6 group step-item border-l border-accent pl-6 relative">
-                            <div class="absolute -left-[5px] top-0 w-2 h-2 rounded-full bg-accent shadow-[0_0_10px_rgba(67,56,202,0.5)]"></div>
-                            <div>
-                                <h4 class="font-bold text-obsidian mb-2 font-display text-xl">3. We Build & Launch It</h4>
-                                <p class="text-sm text-stone/70">Your site goes live and we keep it running. No maintenance on your end — ever.</p>
-                            </div>
-                        </div>
-
+                <!-- Step 1 -->
+                <div class="py-16 md:pr-16 group">
+                    <div class="font-display text-[120px] font-bold leading-none text-white/5 group-hover:text-accent/20 transition-colors duration-500 mb-6 select-none">01</div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-px bg-white/20"></div>
+                        <span class="font-mono text-xs text-white/30 uppercase tracking-widest">Step one</span>
                     </div>
+                    <h3 class="font-display text-2xl font-bold text-white mb-4">Pick Your Style</h3>
+                    <p class="text-white/50 text-sm leading-relaxed">Browse our examples and tell us which look and feel suits your business. Takes 5 minutes.</p>
                 </div>
 
-                <!-- Simple visual -->
-                <div class="relative hidden lg:block step-graphic h-[500px] bg-base border border-obsidian/10 p-12 flex flex-col justify-center">
-                    <div class="space-y-8">
-                        <div class="flex items-start gap-6">
-                            <div class="w-12 h-12 bg-obsidian/5 border border-obsidian/10 flex items-center justify-center font-display font-bold text-obsidian flex-shrink-0">01</div>
-                            <div>
-                                <div class="font-bold text-obsidian mb-1">You choose a design</div>
-                                <div class="text-sm text-stone/60">We show you examples built for your industry.</div>
-                            </div>
-                        </div>
-                        <div class="w-px h-8 bg-obsidian/10 ml-6"></div>
-                        <div class="flex items-start gap-6">
-                            <div class="w-12 h-12 bg-obsidian/5 border border-obsidian/10 flex items-center justify-center font-display font-bold text-obsidian flex-shrink-0">02</div>
-                            <div>
-                                <div class="font-bold text-obsidian mb-1">You share your info</div>
-                                <div class="text-sm text-stone/60">A short form — takes about 10 minutes to fill in.</div>
-                            </div>
-                        </div>
-                        <div class="w-px h-8 bg-obsidian/10 ml-6"></div>
-                        <div class="flex items-start gap-6">
-                            <div class="w-12 h-12 bg-accent flex items-center justify-center font-display font-bold text-surface flex-shrink-0">03</div>
-                            <div>
-                                <div class="font-bold text-obsidian mb-1">Your site goes live</div>
-                                <div class="text-sm text-stone/60">We build it, launch it, and look after it for you.</div>
-                            </div>
-                        </div>
+                <!-- Step 2 -->
+                <div class="py-16 md:px-16 group">
+                    <div class="font-display text-[120px] font-bold leading-none text-white/5 group-hover:text-accent/20 transition-colors duration-500 mb-6 select-none">02</div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-px bg-white/20"></div>
+                        <span class="font-mono text-xs text-white/30 uppercase tracking-widest">Step two</span>
                     </div>
+                    <h3 class="font-display text-2xl font-bold text-white mb-4">Send Us Your Details</h3>
+                    <p class="text-white/50 text-sm leading-relaxed">Just your business name, photos, and the info you want on the site. We handle the rest.</p>
                 </div>
+
+                <!-- Step 3 -->
+                <div class="py-16 md:pl-16 group">
+                    <div class="font-display text-[120px] font-bold leading-none text-accent/30 group-hover:text-accent/60 transition-colors duration-500 mb-6 select-none">03</div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-px bg-accent/50"></div>
+                        <span class="font-mono text-xs text-accent/60 uppercase tracking-widest">Step three</span>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold text-white mb-4">We Build & Launch It</h3>
+                    <p class="text-white/50 text-sm leading-relaxed">Your site goes live and we keep it running. No maintenance on your end — ever.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="border-t border-white/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="font-mono text-xs text-white/30 uppercase tracking-widest">Average launch time: 5–7 days</p>
+                <a href="#contact" class="px-8 py-3 bg-accent text-white text-xs font-bold tracking-widest uppercase hover:bg-accentHover transition-colors">
+                    Start Today →
+                </a>
             </div>
         </div>
     </section>
