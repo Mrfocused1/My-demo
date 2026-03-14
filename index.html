@@ -243,11 +243,11 @@
                             </div>
                             <div style="padding:10px 12px;background:#fff;">
                                 <div style="color:#111;font-size:7.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:7px;">Get a Fast Quote</div>
-                                <form id="plumbing-form" onsubmit="miniFormSubmit(event,'plumbing-form','plumbing-success')" style="display:flex;flex-direction:column;gap:5px;">
-                                    <input type="text" placeholder="Your Name" required style="border:1px solid rgba(0,0,0,0.13);padding:5px 8px;font-size:7px;font-family:inherit;outline:none;color:#111;background:#fff;">
-                                    <input type="text" placeholder="Describe the issue..." required style="border:1px solid rgba(0,0,0,0.13);padding:5px 8px;font-size:7px;font-family:inherit;outline:none;color:#111;background:#fff;">
-                                    <button type="submit" style="background:#111;color:#fff;border:none;padding:7px;font-size:7px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;cursor:pointer;font-family:inherit;">Send Request →</button>
-                                </form>
+                                <div id="plumbing-fields" style="display:flex;flex-direction:column;gap:5px;">
+                                    <input id="demo-plumbing-name" type="text" placeholder="Your Name" readonly style="border:1px solid rgba(0,0,0,0.13);padding:5px 8px;font-size:7px;font-family:inherit;outline:none;color:#111;background:#fff;">
+                                    <input id="demo-plumbing-issue" type="text" placeholder="Describe the issue..." readonly style="border:1px solid rgba(0,0,0,0.13);padding:5px 8px;font-size:7px;font-family:inherit;outline:none;color:#111;background:#fff;">
+                                    <button id="demo-plumbing-btn" type="button" style="background:#111;color:#fff;border:none;padding:7px;font-size:7px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;font-family:inherit;transition:background 0.15s;">Send Request →</button>
+                                </div>
                                 <div id="plumbing-success" style="display:none;flex-direction:column;align-items:center;padding:14px 8px;gap:4px;">
                                     <div style="width:28px;height:28px;background:#22c55e;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;">✓</div>
                                     <div style="font-size:8px;font-weight:700;color:#111;text-transform:uppercase;letter-spacing:0.08em;">Request Sent!</div>
@@ -327,18 +327,18 @@
                             </div>
                             <div style="padding:10px 12px;background:#fff;">
                                 <div style="color:#111;font-size:7.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:7px;">Request a Free Quote</div>
-                                <form id="trade-form" onsubmit="miniFormSubmit(event,'trade-form','trade-success')" style="display:flex;flex-direction:column;gap:5px;">
-                                    <input type="text" placeholder="Your Name" required style="border:1px solid rgba(0,0,0,0.13);padding:5px 8px;font-size:7px;font-family:inherit;outline:none;color:#111;background:#fff;">
-                                    <select required style="border:1px solid rgba(0,0,0,0.13);padding:5px 8px;font-size:7px;font-family:inherit;outline:none;color:#666;background:#fff;appearance:none;">
+                                <div id="trade-fields" style="display:flex;flex-direction:column;gap:5px;">
+                                    <input id="demo-trade-name" type="text" placeholder="Your Name" readonly style="border:1px solid rgba(0,0,0,0.13);padding:5px 8px;font-size:7px;font-family:inherit;outline:none;color:#111;background:#fff;">
+                                    <select id="demo-trade-type" style="border:1px solid rgba(0,0,0,0.13);padding:5px 8px;font-size:7px;font-family:inherit;outline:none;color:#666;background:#fff;appearance:none;">
                                         <option value="" disabled selected>Type of Work ▾</option>
                                         <option>Extension</option>
                                         <option>Renovation</option>
                                         <option>New Build</option>
                                         <option>Other</option>
                                     </select>
-                                    <textarea placeholder="Brief description..." required rows="2" style="border:1px solid rgba(0,0,0,0.13);padding:5px 8px;font-size:7px;font-family:inherit;outline:none;color:#111;background:#fff;resize:none;"></textarea>
-                                    <button type="submit" style="background:#4338CA;color:#fff;border:none;padding:7px;font-size:7px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;cursor:pointer;font-family:inherit;">Get My Free Quote →</button>
-                                </form>
+                                    <textarea id="demo-trade-desc" placeholder="Brief description..." rows="2" readonly style="border:1px solid rgba(0,0,0,0.13);padding:5px 8px;font-size:7px;font-family:inherit;outline:none;color:#111;background:#fff;resize:none;"></textarea>
+                                    <button id="demo-trade-btn" type="button" style="background:#4338CA;color:#fff;border:none;padding:7px;font-size:7px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;font-family:inherit;transition:background 0.15s;">Get My Free Quote →</button>
+                                </div>
                                 <div id="trade-success" style="display:none;flex-direction:column;align-items:center;padding:14px 8px;gap:4px;">
                                     <div style="width:28px;height:28px;background:#4338CA;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;">✓</div>
                                     <div style="font-size:8px;font-weight:700;color:#111;text-transform:uppercase;letter-spacing:0.08em;">Quote Requested!</div>
@@ -1412,52 +1412,102 @@
 
     </script>
 
-    <!-- Interactive Demo Card Functions -->
+    <!-- Auto-playing Demo Card Animations -->
     <script>
-        // Mini form submit → show success state
-        function miniFormSubmit(event, formId, successId) {
-            event.preventDefault();
-            document.getElementById(formId).style.display = 'none';
-            const success = document.getElementById(successId);
-            success.style.display = 'flex';
-            // Reset after 4 seconds so it can be demoed again
-            setTimeout(() => {
-                document.getElementById(formId).reset();
-                document.getElementById(formId).style.display = 'flex';
-                document.getElementById(formId).style.flexDirection = 'column';
-                success.style.display = 'none';
-            }, 4000);
-        }
+        const demoSleep = ms => new Promise(r => setTimeout(r, ms));
 
-        // Locksmith accordion toggle
-        function toggleLsAcc(item) {
-            const body = item.querySelector('.ls-acc-body');
-            const sign = item.querySelector('.ls-acc-sign');
-            const title = item.querySelector('.ls-acc-title');
-            const isOpen = body.style.display !== 'none';
-
-            // Close all items first
-            document.querySelectorAll('#locksmith-acc .ls-acc-item').forEach(el => {
-                el.querySelector('.ls-acc-body').style.display = 'none';
-                el.querySelector('.ls-acc-sign').textContent = '+';
-                el.querySelector('.ls-acc-sign').style.color = 'rgba(0,0,0,0.3)';
-                el.querySelector('.ls-acc-title').style.color = '#111';
-                el.querySelector('.ls-acc-title').style.fontWeight = '600';
-                el.style.background = '#fff';
-                el.style.borderColor = 'rgba(0,0,0,0.09)';
-            });
-
-            // Open clicked item if it was closed
-            if (!isOpen) {
-                body.style.display = 'block';
-                sign.textContent = '−';
-                sign.style.color = '#4338CA';
-                title.style.color = '#4338CA';
-                title.style.fontWeight = '700';
-                item.style.background = '#f5f4ff';
-                item.style.borderColor = 'rgba(67,56,202,0.35)';
+        async function demoType(id, text, speed = 70) {
+            const el = document.getElementById(id);
+            el.value = '';
+            for (const char of text) {
+                el.value += char;
+                await demoSleep(speed + Math.random() * 40);
             }
         }
+
+        function openLsItem(index) {
+            document.querySelectorAll('#locksmith-acc .ls-acc-item').forEach((el, i) => {
+                const body  = el.querySelector('.ls-acc-body');
+                const sign  = el.querySelector('.ls-acc-sign');
+                const title = el.querySelector('.ls-acc-title');
+                const open  = i === index;
+                body.style.display       = open ? 'block' : 'none';
+                sign.textContent         = open ? '−' : '+';
+                sign.style.color         = open ? '#4338CA' : 'rgba(0,0,0,0.3)';
+                title.style.color        = open ? '#4338CA' : '#111';
+                title.style.fontWeight   = open ? '700' : '600';
+                el.style.background      = open ? '#f5f4ff' : '#fff';
+                el.style.borderColor     = open ? 'rgba(67,56,202,0.35)' : 'rgba(0,0,0,0.09)';
+            });
+        }
+
+        async function loopPlumbingDemo() {
+            while (true) {
+                await demoSleep(1200);
+                await demoType('demo-plumbing-name', 'John Smith');
+                await demoSleep(400);
+                await demoType('demo-plumbing-issue', 'Burst pipe under kitchen sink');
+                await demoSleep(500);
+                // Simulate button click flash
+                const btn = document.getElementById('demo-plumbing-btn');
+                btn.style.background = '#4338CA';
+                await demoSleep(180);
+                btn.style.background = '#111';
+                await demoSleep(150);
+                // Show success
+                document.getElementById('plumbing-fields').style.display = 'none';
+                document.getElementById('plumbing-success').style.display = 'flex';
+                await demoSleep(2800);
+                // Reset
+                document.getElementById('plumbing-success').style.display = 'none';
+                document.getElementById('plumbing-fields').style.display = 'flex';
+                document.getElementById('demo-plumbing-name').value = '';
+                document.getElementById('demo-plumbing-issue').value = '';
+            }
+        }
+
+        async function loopLocksmithDemo() {
+            let current = 0;
+            openLsItem(0);
+            while (true) {
+                await demoSleep(2200);
+                current = (current + 1) % 3;
+                openLsItem(current);
+            }
+        }
+
+        async function loopTradeDemo() {
+            while (true) {
+                await demoSleep(1200);
+                await demoType('demo-trade-name', 'Sarah Williams');
+                await demoSleep(400);
+                document.getElementById('demo-trade-type').value = 'Extension';
+                await demoSleep(500);
+                await demoType('demo-trade-desc', 'Single storey rear extension, approx 4m x 5m');
+                await demoSleep(500);
+                // Simulate button click flash
+                const btn = document.getElementById('demo-trade-btn');
+                btn.style.background = '#3730A3';
+                await demoSleep(180);
+                btn.style.background = '#4338CA';
+                await demoSleep(150);
+                // Show success
+                document.getElementById('trade-fields').style.display = 'none';
+                document.getElementById('trade-success').style.display = 'flex';
+                await demoSleep(2800);
+                // Reset
+                document.getElementById('trade-success').style.display = 'none';
+                document.getElementById('trade-fields').style.display = 'flex';
+                document.getElementById('demo-trade-name').value = '';
+                document.getElementById('demo-trade-type').value = '';
+                document.getElementById('demo-trade-desc').value = '';
+            }
+        }
+
+        // Start all three loops with staggered delays
+        demoSleep(800).then(loopPlumbingDemo);
+        demoSleep(400).then(loopLocksmithDemo);
+        demoSleep(1600).then(loopTradeDemo);
     </script>
 </body>
 </html>
