@@ -888,20 +888,71 @@
         </div>
     </section>
 
-    <!-- SECTION 9: CTA -->
+    <!-- SECTION 9: CONTACT -->
     <section id="contact" class="py-32 bg-base relative overflow-hidden grid-bg">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
-        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center text-obsidian cta-content">
-            <h2 class="font-display text-5xl md:text-7xl font-extrabold mb-8 tracking-tight uppercase">Get Your Website Today.</h2>
-            <p class="text-lg text-stone/60 mb-12 max-w-xl mx-auto">No tech knowledge needed. We build it, host it, and take care of it — you just run your business.</p>
+                <!-- Left: Info -->
+                <div>
+                    <p class="font-mono text-xs uppercase tracking-[0.3em] text-obsidian/40 mb-4">Get in Touch</p>
+                    <h2 class="font-display text-5xl md:text-6xl font-extrabold mb-6 tracking-tight uppercase leading-none">Let's Build Your Site.</h2>
+                    <p class="text-base text-stone/60 mb-10 max-w-sm leading-relaxed">Tell us about your business and we'll get back to you within one working day. No tech knowledge needed.</p>
 
-            <div class="flex flex-col sm:flex-row justify-center gap-6">
-                <button class="px-10 py-5 bg-obsidian text-surface font-bold uppercase tracking-widest text-sm hover:bg-accent transition-colors border border-obsidian">
-                    Get Started
-                </button>
-                <button class="px-10 py-5 bg-transparent text-obsidian font-bold uppercase tracking-widest text-sm hover:bg-obsidian/5 transition-colors border border-obsidian/20">
-                    See Examples
-                </button>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-obsidian flex items-center justify-center flex-shrink-0">
+                                <svg class="w-4 h-4 text-surface" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            </div>
+                            <div>
+                                <p class="font-mono text-xs uppercase tracking-widest text-obsidian/40 mb-1">Email</p>
+                                <a href="mailto:hello@mydesk.click" class="font-bold text-obsidian hover:text-accent transition-colors">hello@mydesk.click</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-obsidian flex items-center justify-center flex-shrink-0">
+                                <svg class="w-4 h-4 text-surface" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div>
+                                <p class="font-mono text-xs uppercase tracking-widest text-obsidian/40 mb-1">Response Time</p>
+                                <p class="font-bold text-obsidian">Within 1 working day</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Form -->
+                <div>
+                    <form id="contact-form" class="space-y-5" onsubmit="submitContactForm(event)">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="font-mono text-xs uppercase tracking-widest text-obsidian/50 block mb-2">Your Name *</label>
+                                <input type="text" id="cf-name" required placeholder="John Smith" class="w-full border border-obsidian/20 bg-white px-4 py-3 text-sm text-obsidian placeholder-obsidian/30 focus:outline-none focus:border-obsidian transition-colors">
+                            </div>
+                            <div>
+                                <label class="font-mono text-xs uppercase tracking-widest text-obsidian/50 block mb-2">Email Address *</label>
+                                <input type="email" id="cf-email" required placeholder="john@example.com" class="w-full border border-obsidian/20 bg-white px-4 py-3 text-sm text-obsidian placeholder-obsidian/30 focus:outline-none focus:border-obsidian transition-colors">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="font-mono text-xs uppercase tracking-widest text-obsidian/50 block mb-2">Business Type</label>
+                            <input type="text" id="cf-business" placeholder="e.g. Plumber, Flooring, Locksmith…" class="w-full border border-obsidian/20 bg-white px-4 py-3 text-sm text-obsidian placeholder-obsidian/30 focus:outline-none focus:border-obsidian transition-colors">
+                        </div>
+
+                        <div>
+                            <label class="font-mono text-xs uppercase tracking-widest text-obsidian/50 block mb-2">Message *</label>
+                            <textarea id="cf-message" required rows="5" placeholder="Tell us a bit about your business and what you need…" class="w-full border border-obsidian/20 bg-white px-4 py-3 text-sm text-obsidian placeholder-obsidian/30 focus:outline-none focus:border-obsidian transition-colors resize-none"></textarea>
+                        </div>
+
+                        <div id="cf-feedback" class="hidden text-sm font-mono"></div>
+
+                        <button type="submit" id="cf-submit" class="w-full px-8 py-4 bg-obsidian text-surface font-bold uppercase tracking-widest text-xs hover:bg-accent transition-colors border border-obsidian">
+                            Send Enquiry
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -938,6 +989,7 @@
                 <div class="md:col-span-3">
                     <h4 class="font-mono text-xs text-obsidian/50 mb-6 uppercase tracking-widest">Get in Touch</h4>
                     <p class="text-sm text-stone mb-4">Have a question? We'd love to hear from you.</p>
+                    <a href="mailto:hello@mydesk.click" class="font-bold text-sm text-obsidian hover:text-accent transition-colors block mb-4">hello@mydesk.click</a>
                     <a href="#contact" class="inline-block px-6 py-3 bg-obsidian text-surface text-xs font-bold uppercase tracking-widest hover:bg-accent transition-colors">Contact Us</a>
                 </div>
             </div>
@@ -1536,6 +1588,44 @@
         demoSleep(800).then(loopPlumbingDemo);
         demoSleep(400).then(loopLocksmithDemo);
         demoSleep(1600).then(loopTradeDemo);
+    </script>
+
+    <!-- Contact Form -->
+    <script>
+        async function submitContactForm(e) {
+            e.preventDefault();
+            const btn = document.getElementById('cf-submit');
+            const feedback = document.getElementById('cf-feedback');
+            const name = document.getElementById('cf-name').value.trim();
+            const email = document.getElementById('cf-email').value.trim();
+            const business = document.getElementById('cf-business').value.trim();
+            const message = document.getElementById('cf-message').value.trim();
+
+            btn.disabled = true;
+            btn.textContent = 'Sending…';
+            feedback.className = 'hidden text-sm font-mono';
+
+            try {
+                const res = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, business, message }),
+                });
+                if (res.ok) {
+                    feedback.textContent = '✓ Message sent — we\'ll be in touch within one working day.';
+                    feedback.className = 'text-sm font-mono text-green-700';
+                    document.getElementById('contact-form').reset();
+                } else {
+                    throw new Error('Send failed');
+                }
+            } catch {
+                feedback.textContent = '✗ Something went wrong. Please email us directly at hello@mydesk.click';
+                feedback.className = 'text-sm font-mono text-red-600';
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Send Enquiry';
+            }
+        }
     </script>
 </body>
 </html>
