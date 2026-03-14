@@ -18,7 +18,7 @@ export default async function handler(req, res) {
             },
             body: JSON.stringify({
                 from: 'My Demo <noreply@mydemo.click>',
-                to: ['hello@mydesk.click'],
+                to: ['hello@mydemo.click'],
                 reply_to: email,
                 subject: `New enquiry from ${name}${business ? ` — ${business}` : ''}`,
                 html: `
