@@ -128,10 +128,21 @@
                 </div>
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
-                    <button class="text-obsidian p-2 border border-obsidian/20 hover:bg-obsidian hover:text-surface transition-colors">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="text-obsidian p-2 border border-obsidian/20 hover:bg-obsidian hover:text-surface transition-colors">
+                        <svg id="menu-icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                        <svg id="menu-icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                     </button>
                 </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu panel -->
+        <div id="mobile-menu" class="md:hidden hidden bg-base border-t border-obsidian/10">
+            <div class="px-4 py-6 flex flex-col gap-1">
+                <a href="#services" onclick="closeMobileMenu()" class="text-xs font-bold tracking-widest uppercase text-stone hover:text-accent transition-colors py-3 border-b border-obsidian/5">Services</a>
+                <a href="#showcase" onclick="closeMobileMenu()" class="text-xs font-bold tracking-widest uppercase text-stone hover:text-accent transition-colors py-3 border-b border-obsidian/5">Showcase</a>
+                <a href="/pricing" onclick="closeMobileMenu()" class="text-xs font-bold tracking-widest uppercase text-stone hover:text-accent transition-colors py-3 border-b border-obsidian/5">Pricing</a>
+                <a href="#contact" onclick="closeMobileMenu()" class="mt-4 px-6 py-4 bg-obsidian text-surface text-xs font-bold tracking-widest uppercase hover:bg-accent transition-colors text-center">Initiate</a>
             </div>
         </div>
     </nav>
@@ -1409,6 +1420,24 @@
         });
 
 
+    </script>
+
+    <!-- Mobile Menu -->
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const open = document.getElementById('menu-icon-open');
+            const close = document.getElementById('menu-icon-close');
+            const isHidden = menu.classList.contains('hidden');
+            menu.classList.toggle('hidden', !isHidden);
+            open.style.display = isHidden ? 'none' : 'block';
+            close.style.display = isHidden ? 'block' : 'none';
+        }
+        function closeMobileMenu() {
+            document.getElementById('mobile-menu').classList.add('hidden');
+            document.getElementById('menu-icon-open').style.display = 'block';
+            document.getElementById('menu-icon-close').style.display = 'none';
+        }
     </script>
 
     <!-- Auto-playing Demo Card Animations -->
