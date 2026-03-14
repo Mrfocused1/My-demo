@@ -1,4 +1,12 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/pricing", "destination": "/pricing.html" },
+    { "source": "/strata-flooring", "destination": "/strata-flooring.html" },
+    { "source": "/flow-plumbing", "destination": "/flow-plumbing.html" },
+    { "source": "/aqua-pool", "destination": "/aqua-pool.html" }
+  ]
 }
