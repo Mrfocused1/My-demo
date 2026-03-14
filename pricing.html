@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing | My Demo</title>
+
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Sans:opsz,wght@9..40,400..500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"DM Sans"', 'sans-serif'],
+                        display: ['"Bricolage Grotesque"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        base: '#F4F4F0',
+                        surface: '#FFFFFF',
+                        obsidian: '#0A0A0A',
+                        stone: '#2A2A2A',
+                        accent: '#4338CA',
+                        accentHover: '#3730A3',
+                    },
+                    boxShadow: {
+                        'harsh': '4px 4px 0px 0px rgba(10,10,10,1)',
+                        'harsh-sm': '2px 2px 0px 0px rgba(10,10,10,1)',
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F4F4F0;
+            color: #2A2A2A;
+            overflow-x: hidden;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+        }
+        .grid-bg {
+            background-size: 40px 40px;
+            background-image:
+                linear-gradient(to right, rgba(10,10,10,0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(10,10,10,0.05) 1px, transparent 1px);
+        }
+        .grid-bg-dark {
+            background-size: 40px 40px;
+            background-image:
+                linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="font-sans">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-base/90 backdrop-blur-md border-b border-obsidian/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="font-display font-bold text-xl text-obsidian tracking-tight uppercase">My Demo</a>
+                <div class="hidden md:flex space-x-10 items-center">
+                    <a href="index.html#services" class="text-xs font-bold tracking-widest uppercase text-stone hover:text-accent transition-colors">Services</a>
+                    <a href="index.html#showcase" class="text-xs font-bold tracking-widest uppercase text-stone hover:text-accent transition-colors">Showcase</a>
+                    <a href="pricing.html" class="text-xs font-bold tracking-widest uppercase text-accent transition-colors">Pricing</a>
+                    <a href="index.html#contact" class="px-6 py-3 bg-obsidian text-surface text-xs font-bold tracking-widest uppercase hover:bg-accent transition-colors shadow-harsh">Initiate</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="text-obsidian p-2 border border-obsidian/20 hover:bg-obsidian hover:text-surface transition-colors">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-40 pb-20 grid-bg border-b border-obsidian/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="font-mono text-xs uppercase tracking-[0.3em] text-obsidian/40 mb-4">Transparent Pricing</p>
+            <h1 class="font-display text-5xl lg:text-7xl font-bold text-obsidian leading-none tracking-tight mb-6">Simple.<br>Honest.<br>No surprises.</h1>
+            <p class="text-stone/70 text-lg max-w-xl leading-relaxed">A professional web presence built to perform — with one clear price to launch and one to keep it running.</p>
+        </div>
+    </section>
+
+    <!-- Pricing Cards -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+
+                <!-- Standard Build -->
+                <div class="bg-surface border-2 border-obsidian p-10 shadow-harsh flex flex-col h-full">
+                    <div class="mb-8">
+                        <p class="font-mono text-xs uppercase tracking-[0.25em] text-obsidian/40 mb-3">Standard Build</p>
+                        <h2 class="font-display text-4xl font-bold text-obsidian mb-2">Professional<br>Website</h2>
+                        <p class="text-stone/60 text-sm leading-relaxed mt-4">Everything a growing business needs — fast, polished, and ready to convert.</p>
+                    </div>
+
+                    <div class="border-t-2 border-obsidian/10 pt-8 mb-8 space-y-6">
+                        <!-- One-off cost -->
+                        <div class="flex items-end justify-between gap-4">
+                            <div>
+                                <p class="font-mono text-xs uppercase tracking-widest text-obsidian/40 mb-1">Initial Build</p>
+                                <p class="text-stone/70 text-sm">One-off payment to design and build your site</p>
+                            </div>
+                            <div class="text-right shrink-0">
+                                <span class="font-display text-4xl font-bold text-obsidian">$500</span>
+                            </div>
+                        </div>
+                        <!-- Monthly cost -->
+                        <div class="flex items-end justify-between gap-4">
+                            <div>
+                                <p class="font-mono text-xs uppercase tracking-widest text-obsidian/40 mb-1">Monthly Retainer</p>
+                                <p class="text-stone/70 text-sm">Hosting, maintenance & ongoing management</p>
+                            </div>
+                            <div class="text-right shrink-0">
+                                <span class="font-display text-4xl font-bold text-obsidian">$150</span>
+                                <span class="text-stone/50 text-sm font-mono">/mo</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Inclusions -->
+                    <div class="border-t-2 border-obsidian/10 pt-8 mb-10">
+                        <p class="font-mono text-xs uppercase tracking-widest text-obsidian/40 mb-5">What's included</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-sm text-stone/80">
+                                <span class="font-mono text-accent mt-0.5">→</span>
+                                <span>Custom design tailored to your brand</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-stone/80">
+                                <span class="font-mono text-accent mt-0.5">→</span>
+                                <span>Mobile-first, fully responsive build</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-stone/80">
+                                <span class="font-mono text-accent mt-0.5">→</span>
+                                <span>Performance-optimised and SEO-ready</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-stone/80">
+                                <span class="font-mono text-accent mt-0.5">→</span>
+                                <span>Secure hosting on high-availability infrastructure</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-stone/80">
+                                <span class="font-mono text-accent mt-0.5">→</span>
+                                <span>Regular updates, patches &amp; backups</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-stone/80">
+                                <span class="font-mono text-accent mt-0.5">→</span>
+                                <span>Ongoing content &amp; copy amendments</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-stone/80">
+                                <span class="font-mono text-accent mt-0.5">→</span>
+                                <span>Priority support via email</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="index.html#contact" class="mt-auto inline-block w-full text-center px-8 py-4 bg-obsidian text-surface text-xs font-bold tracking-widest uppercase hover:bg-accent transition-colors shadow-harsh">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Premium Custom Build -->
+                <div class="bg-obsidian border-2 border-obsidian p-10 shadow-harsh grid-bg-dark flex flex-col h-full relative overflow-hidden">
+                    <!-- Badge -->
+                    <div class="absolute top-8 right-8">
+                        <span class="font-mono text-xs uppercase tracking-widest bg-accent text-white px-3 py-1">Premium</span>
+                    </div>
+
+                    <div class="mb-8">
+                        <p class="font-mono text-xs uppercase tracking-[0.25em] text-white/40 mb-3">Premium Custom Build</p>
+                        <h2 class="font-display text-4xl font-bold text-white mb-2">Bespoke<br>Architecture</h2>
+                        <p class="text-white/50 text-sm leading-relaxed mt-4">A fully bespoke engagement — scoped, priced, and built around your exact requirements.</p>
+                    </div>
+
+                    <div class="border-t-2 border-white/10 pt-8 mb-8">
+                        <div class="flex items-center gap-4">
+                            <div>
+                                <p class="font-mono text-xs uppercase tracking-widest text-white/40 mb-1">Pricing</p>
+                                <p class="font-display text-3xl font-bold text-white">Available on<br>Enquiry</p>
+                                <p class="text-white/50 text-sm mt-3 leading-relaxed">Every premium project is unique. We'll scope your requirements and provide a tailored proposal — no guesswork, no hidden costs.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Inclusions -->
+                    <div class="border-t-2 border-white/10 pt-8 mb-10">
+                        <p class="font-mono text-xs uppercase tracking-widest text-white/40 mb-5">What's included</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-sm text-white/70">
+                                <span class="font-mono text-accent mt-0.5">→</span>
+                                <span>Everything in Standard, plus:</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-white/70">
+                                <span class="font-mono text-accent mt-0.5">→</span>
+                                <span>Deep-dive discovery &amp; strategy session</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-white/70">
+                                <span class="font-mono text-accent mt-0.5">→</span>
+                                <span>Multi-page or complex web application</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-white/70">
+                                <span class="font-mono text-accent mt-0.5">→</span>
+                                <span>Custom integrations (CRM, bookings, e-commerce)</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-white/70">
+                                <span class="font-mono text-accent mt-0.5">→</span>
+                                <span>Advanced animations &amp; interactions</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-white/70">
+                                <span class="font-mono text-accent mt-0.5">→</span>
+                                <span>Dedicated account management</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-white/70">
+                                <span class="font-mono text-accent mt-0.5">→</span>
+                                <span>SLA-backed uptime &amp; response times</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="index.html#contact" class="mt-auto inline-block w-full text-center px-8 py-4 bg-accent text-surface text-xs font-bold tracking-widest uppercase hover:bg-accentHover transition-colors">
+                        Enquire Now
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ / Reassurance strip -->
+    <section class="py-20 border-t-2 border-obsidian/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="font-mono text-xs uppercase tracking-[0.3em] text-obsidian/40 mb-12">Common questions</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+                <div>
+                    <h3 class="font-display text-lg font-bold text-obsidian mb-3">Is there a contract?</h3>
+                    <p class="text-stone/60 text-sm leading-relaxed">The monthly retainer runs on a rolling basis — cancel with 30 days' notice at any time. No long-term lock-in.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-display text-lg font-bold text-obsidian mb-3">What's in the monthly fee?</h3>
+                    <p class="text-stone/60 text-sm leading-relaxed">Hosting, security monitoring, backups, platform updates, and day-to-day content changes. Your site is looked after, always.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-display text-lg font-bold text-obsidian mb-3">How long does a build take?</h3>
+                    <p class="text-stone/60 text-sm leading-relaxed">Most standard builds are live within 2–3 weeks of receiving your brief and content. Premium timelines are scoped per project.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-obsidian py-24 grid-bg-dark border-t-2 border-obsidian">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="font-mono text-xs uppercase tracking-[0.3em] text-white/30 mb-4">Ready to begin?</p>
+            <h2 class="font-display text-4xl lg:text-6xl font-bold text-white mb-8 leading-tight">Let's build something<br>worth showing off.</h2>
+            <a href="index.html#contact" class="inline-block px-10 py-4 bg-accent text-surface text-xs font-bold tracking-widest uppercase hover:bg-accentHover transition-colors">
+                Start Your Project
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-obsidian border-t border-white/10 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <p class="text-white/30 text-xs font-mono">&copy; 2026 My Demo. All rights reserved.</p>
+            <div class="flex gap-6 font-mono text-xs text-white/30">
+                <a href="terms.html" class="hover:text-white transition-colors">Terms</a>
+                <a href="privacy.html" class="hover:text-white transition-colors">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
