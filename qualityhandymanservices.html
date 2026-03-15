@@ -171,21 +171,21 @@
                 <span class="text-gold text-xs font-bold tracking-[0.25em] uppercase font-sans">Trusted Since 2008</span>
                 <div class="w-8 h-px bg-gold/50"></div>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 md:divide-x divide-white/10">
+            <div id="stats-grid" class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 md:divide-x divide-white/10">
                 <div class="text-center md:px-8">
-                    <div class="font-serif text-4xl font-bold text-gold mb-1">500+</div>
+                    <div id="stat-jobs" class="font-serif text-4xl font-bold text-gold mb-1">0+</div>
                     <div class="text-cream/50 text-sm font-sans">Jobs Completed</div>
                 </div>
                 <div class="text-center md:px-8">
-                    <div class="font-serif text-4xl font-bold text-gold mb-1">15+</div>
+                    <div id="stat-years" class="font-serif text-4xl font-bold text-gold mb-1">0+</div>
                     <div class="text-cream/50 text-sm font-sans">Years Experience</div>
                 </div>
                 <div class="text-center md:px-8">
-                    <div class="font-serif text-4xl font-bold text-gold mb-1">4.9★</div>
+                    <div id="stat-rating" class="font-serif text-4xl font-bold text-gold mb-1">0.0★</div>
                     <div class="text-cream/50 text-sm font-sans">Average Rating</div>
                 </div>
                 <div class="text-center md:px-8">
-                    <div class="font-serif text-4xl font-bold text-gold mb-1">24hr</div>
+                    <div id="stat-response" class="font-serif text-4xl font-bold text-gold mb-1">0hr</div>
                     <div class="text-cream/50 text-sm font-sans">Response Time</div>
                 </div>
             </div>
@@ -582,6 +582,33 @@
         }, { threshold: 0.12 });
 
         document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Stats countup
+        function countUp(el, target, duration, decimals, suffix) {
+            const start = performance.now();
+            function step(now) {
+                const progress = Math.min((now - start) / duration, 1);
+                const ease = 1 - Math.pow(1 - progress, 3);
+                const value = (target * ease).toFixed(decimals);
+                el.textContent = value + suffix;
+                if (progress < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        }
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    countUp(document.getElementById('stat-jobs'),    500, 1800, 0, '+');
+                    countUp(document.getElementById('stat-years'),    15,  1400, 0, '+');
+                    countUp(document.getElementById('stat-rating'),   4.9, 1600, 1, '★');
+                    countUp(document.getElementById('stat-response'), 24,  1200, 0, 'hr');
+                    statsObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.4 });
+
+        statsObserver.observe(document.getElementById('stats-grid'));
     </script>
 
 </body>
