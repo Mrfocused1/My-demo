@@ -8,6 +8,7 @@
     { "source": "/strata-flooring", "destination": "/strata-flooring.html" },
     { "source": "/flow-plumbing", "destination": "/flow-plumbing.html" },
     { "source": "/aqua-pool", "destination": "/aqua-pool.html" },
-    { "source": "/qualityhandymanservices", "destination": "/qualityhandymanservices.html" }
+    { "source": "/qualityhandymanservices", "destination": "/qualityhandymanservices.html" },
+    { "source": "/plumber", "destination": "/plumber.html" }
   ]
 }
