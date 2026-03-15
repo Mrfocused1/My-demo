@@ -9,6 +9,7 @@
     { "source": "/flow-plumbing", "destination": "/flow-plumbing.html" },
     { "source": "/aqua-pool", "destination": "/aqua-pool.html" },
     { "source": "/qualityhandymanservices", "destination": "/qualityhandymanservices.html" },
-    { "source": "/plumber", "destination": "/plumber.html" }
+    { "source": "/plumber", "destination": "/plumber.html" },
+    { "source": "/tree", "destination": "/tree.html" }
   ]
 }

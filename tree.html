@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TreePro — Professional Tree Surgery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#1B2B8B',
+            'navy-dark': '#141F6B',
+            'navy-mid': '#1e3099',
+            mint: '#5CE87F',
+            'soft-bg': '#F0F1FF'
+          },
+          fontFamily: { sans: ['DM Sans', 'system-ui', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: 'DM Sans', system-ui, sans-serif; }
+
+    .penta-clip {
+      clip-path: polygon(50% 0%, 100% 28%, 100% 100%, 0% 100%, 0% 28%);
+    }
+
+    @media (max-width: 640px) {
+      .penta-clip {
+        clip-path: none;
+        border-radius: 1rem;
+      }
+    }
+
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    .accordion-body.open {
+      max-height: 300px;
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: grid; }
+
+    html { scroll-behavior: smooth; }
+
+    .hero-headline {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .section-h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .floating-card {
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 8px 32px rgba(27,43,139,0.18);
+      padding: 0.85rem 1.1rem;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .logo-item {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #9ca3af;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* Sticky nav shadow on scroll */
+    #main-nav {
+      transition: box-shadow 0.2s;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+
+<!-- ═══════════════════════════════════════════════
+  1. ANNOUNCEMENT BAR
+═══════════════════════════════════════════════ -->
+<div class="bg-navy-dark text-white text-sm py-2.5 text-center px-4 font-medium tracking-wide">
+  📋 Book your FREE tree survey — no obligation, same-day availability available →
+</div>
+
+<!-- ═══════════════════════════════════════════════
+  2. NAVIGATION
+═══════════════════════════════════════════════ -->
+<nav id="main-nav" class="sticky top-0 z-50 bg-white border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between h-16">
+
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2.5 flex-shrink-0">
+      <svg class="w-8 h-8 text-navy" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="16" r="16" fill="#1B2B8B" opacity="0.08"/>
+        <path d="M16 4C16 4 8 10 8 17a8 8 0 0 0 7 7.94V28h2v-3.06A8 8 0 0 0 24 17C24 10 16 4 16 4z" fill="#1B2B8B"/>
+        <path d="M16 14v14" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M16 18l-3-3" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M16 21l3-3" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span class="text-navy font-extrabold text-xl tracking-tight">TreePro</span>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-7">
+      <a href="#services" class="text-gray-600 hover:text-navy font-medium text-sm transition-colors">Services</a>
+      <a href="#about" class="text-gray-600 hover:text-navy font-medium text-sm transition-colors">About</a>
+      <a href="#reviews" class="text-gray-600 hover:text-navy font-medium text-sm transition-colors">Reviews</a>
+      <a href="#areas" class="text-gray-600 hover:text-navy font-medium text-sm transition-colors">Areas</a>
+      <a href="#contact" class="text-gray-600 hover:text-navy font-medium text-sm transition-colors">Contact</a>
+    </div>
+
+    <!-- CTA + hamburger -->
+    <div class="flex items-center gap-3">
+      <a href="#contact" class="hidden sm:inline-flex items-center gap-1.5 bg-mint text-navy font-bold text-sm px-5 py-2.5 rounded-full hover:bg-green-400 transition-colors shadow-sm">
+        Get Free Survey
+      </a>
+      <button id="hamburger" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition" aria-label="Open menu">
+        <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-5 pb-5 pt-3 flex flex-col gap-4">
+    <a href="#services" class="text-gray-700 font-medium py-1 mobile-link">Services</a>
+    <a href="#about" class="text-gray-700 font-medium py-1 mobile-link">About</a>
+    <a href="#reviews" class="text-gray-700 font-medium py-1 mobile-link">Reviews</a>
+    <a href="#areas" class="text-gray-700 font-medium py-1 mobile-link">Areas</a>
+    <a href="#contact" class="text-gray-700 font-medium py-1 mobile-link">Contact</a>
+    <a href="#contact" class="bg-mint text-navy font-bold text-sm px-5 py-3 rounded-full text-center mobile-link">Get Free Survey</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════
+  3. HERO SECTION
+═══════════════════════════════════════════════ -->
+<section class="bg-white pt-16 pb-20 px-5 sm:px-8 overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+      <!-- Left: Text -->
+      <div class="flex flex-col gap-6">
+        <!-- Pill tag -->
+        <div class="inline-flex self-start items-center gap-2 bg-soft-bg text-navy text-sm font-semibold px-4 py-2 rounded-full">
+          <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          ISA Certified Arborists
+        </div>
+
+        <!-- H1 -->
+        <h1 class="hero-headline text-navy">
+          Professional<br/>Tree Surgery<br/>You Can Trust
+        </h1>
+
+        <!-- Subtext -->
+        <p class="text-gray-500 text-lg leading-relaxed max-w-lg">
+          Safe removal. Crown reduction. Stump grinding. Fully insured experts serving your area.
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-wrap gap-3 mt-1">
+          <a href="#contact" class="inline-flex items-center gap-2 bg-mint text-navy font-bold text-base px-7 py-3.5 rounded-full hover:bg-green-400 transition-colors shadow-sm">
+            Book a Survey <span>→</span>
+          </a>
+          <a href="#work" class="inline-flex items-center gap-2 border-2 border-navy text-navy font-bold text-base px-7 py-3.5 rounded-full hover:bg-soft-bg transition-colors">
+            View Our Work
+          </a>
+        </div>
+
+        <!-- Trust line -->
+        <div class="flex flex-wrap items-center gap-4 mt-2">
+          <div class="flex items-center gap-1.5">
+            <div class="flex text-yellow-400 text-sm">★★★★★</div>
+            <span class="text-gray-500 text-sm font-medium">Rated 4.9/5</span>
+          </div>
+          <span class="text-gray-300 hidden sm:inline">·</span>
+          <span class="text-gray-500 text-sm font-medium">500+ trees removed</span>
+          <span class="text-gray-300 hidden sm:inline">·</span>
+          <span class="text-gray-500 text-sm font-medium">Fully insured</span>
+        </div>
+      </div>
+
+      <!-- Right: Pentagon image + floating cards -->
+      <div class="relative flex justify-center lg:justify-end mt-4 lg:mt-0">
+        <div class="relative" style="width: 400px; max-width: 100%;">
+          <!-- Pentagon image -->
+          <div class="penta-clip overflow-hidden" style="height: 430px; width: 100%;">
+            <img
+              src="https://images.pexels.com/photos/1005644/pexels-photo-1005644.jpeg?auto=compress&cs=tinysrgb&w=800&q=80"
+              alt="Trees in nature"
+              class="w-full h-full object-cover object-center"
+            />
+          </div>
+
+          <!-- Floating card: bottom-left -->
+          <div class="floating-card absolute bottom-6 -left-4 z-10 min-w-max">
+            <div class="flex items-center gap-2.5">
+              <div class="w-9 h-9 rounded-full bg-mint flex items-center justify-center text-lg">🌳</div>
+              <div>
+                <div class="text-xs text-gray-400 font-medium">Job Complete</div>
+                <div class="text-navy font-bold text-sm leading-tight">Oak tree safely removed</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating badge: top-right -->
+          <div class="floating-card absolute top-16 -right-4 z-10">
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-mint"></div>
+              <span class="text-navy font-bold text-sm">ISA Certified</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+  4. SOCIAL PROOF / LOGOS BAR
+═══════════════════════════════════════════════ -->
+<section class="bg-white border-t border-gray-100 py-10 px-5 sm:px-8">
+  <div class="max-w-5xl mx-auto text-center">
+    <p class="text-gray-400 text-sm font-medium mb-6 uppercase tracking-widest">Trusted by homeowners and councils across the region</p>
+    <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-4">
+      <span class="logo-item">Arboricultural Association</span>
+      <span class="text-gray-200 hidden sm:inline text-xl">·</span>
+      <span class="logo-item">NPTC Certified</span>
+      <span class="text-gray-200 hidden sm:inline text-xl">·</span>
+      <span class="logo-item">ISA Member</span>
+      <span class="text-gray-200 hidden sm:inline text-xl">·</span>
+      <span class="logo-item">TrustMark</span>
+      <span class="text-gray-200 hidden sm:inline text-xl">·</span>
+      <span class="logo-item">Checkatrade</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+  5. FEATURE SECTION — Expert. Safe. Guaranteed.
+═══════════════════════════════════════════════ -->
+<section id="about" class="bg-white py-24 px-5 sm:px-8 overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: Pentagon image + checklist card -->
+      <div class="relative flex justify-center order-2 lg:order-1">
+        <div class="relative" style="width: 380px; max-width: 100%;">
+          <div class="penta-clip overflow-hidden" style="height: 420px; width: 100%;">
+            <img
+              src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800&q=80"
+              alt="Arborist at work"
+              class="w-full h-full object-cover object-top"
+            />
+          </div>
+
+          <!-- Floating checklist card -->
+          <div class="floating-card absolute bottom-8 -right-4 z-10 min-w-max">
+            <div class="text-navy font-bold text-sm mb-2">Site Progress</div>
+            <div class="flex flex-col gap-1.5">
+              <div class="flex items-center gap-2 text-sm text-gray-600">
+                <span class="text-mint font-bold">✓</span> Site assessed
+              </div>
+              <div class="flex items-center gap-2 text-sm text-gray-600">
+                <span class="text-mint font-bold">✓</span> Work complete
+              </div>
+              <div class="flex items-center gap-2 text-sm text-gray-600">
+                <span class="text-mint font-bold">✓</span> Clean-up done
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Text -->
+      <div class="flex flex-col gap-6 order-1 lg:order-2">
+        <span class="text-navy text-xs font-bold uppercase tracking-widest">Why Choose Us</span>
+        <h2 class="section-h2 text-navy">Tree Care That's Safe, Thorough and Guaranteed</h2>
+        <p class="text-gray-500 text-lg leading-relaxed">
+          Our professional arborists bring years of hands-on experience to every job. We're fully insured, methodical in our approach, and committed to leaving your property cleaner than we found it.
+        </p>
+
+        <!-- Checklist -->
+        <div class="flex flex-col gap-4 mt-2">
+          <div class="flex items-start gap-3">
+            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-navy flex items-center justify-center mt-0.5">
+              <svg class="w-3.5 h-3.5 text-white" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <div class="text-navy font-bold">Licensed & ISA Certified Arborists</div>
+              <div class="text-gray-500 text-sm mt-0.5">Qualified professionals you can trust on your property.</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-navy flex items-center justify-center mt-0.5">
+              <svg class="w-3.5 h-3.5 text-white" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <div class="text-navy font-bold">Transparent Pricing — No Hidden Fees</div>
+              <div class="text-gray-500 text-sm mt-0.5">Written quotes before any work begins. No surprises.</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-navy flex items-center justify-center mt-0.5">
+              <svg class="w-3.5 h-3.5 text-white" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <div class="text-navy font-bold">12-Month Workmanship Guarantee</div>
+              <div class="text-gray-500 text-sm mt-0.5">We stand behind every job we complete.</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-navy flex items-center justify-center mt-0.5">
+              <svg class="w-3.5 h-3.5 text-white" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <div class="text-navy font-bold">Full Site Clean-Up Included</div>
+              <div class="text-gray-500 text-sm mt-0.5">We remove all debris. Your garden is left spotless.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+  6. SEE OUR WORK
+═══════════════════════════════════════════════ -->
+<section id="work" class="bg-white py-20 px-5 sm:px-8">
+  <div class="max-w-5xl mx-auto text-center">
+    <h2 class="section-h2 text-navy mb-4">Professional results, every time</h2>
+    <p class="text-gray-500 text-lg max-w-2xl mx-auto mb-12">
+      Watch how our team handles everything from emergency removals to precision crown work:
+    </p>
+
+    <!-- Demo panel -->
+    <div class="bg-navy rounded-2xl overflow-hidden shadow-2xl p-4 sm:p-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- Left image: with play button overlay -->
+        <div class="relative rounded-xl overflow-hidden group cursor-pointer" style="height: 280px;">
+          <img
+            src="https://images.pexels.com/photos/167698/pexels-photo-167698.jpeg?auto=compress&cs=tinysrgb&w=800&q=80"
+            alt="Tree removal work"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-navy/40 flex items-center justify-center">
+            <div class="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6 text-navy ml-1" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="absolute bottom-4 left-4">
+            <span class="bg-navy/80 text-white text-xs font-semibold px-3 py-1 rounded-full">Emergency Removal</span>
+          </div>
+        </div>
+
+        <!-- Right image -->
+        <div class="relative rounded-xl overflow-hidden group cursor-pointer" style="height: 280px;">
+          <img
+            src="https://images.pexels.com/photos/775201/pexels-photo-775201.jpeg?auto=compress&cs=tinysrgb&w=800&q=80"
+            alt="Crown work"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-navy/20 group-hover:bg-navy/30 transition-colors"></div>
+          <div class="absolute bottom-4 left-4">
+            <span class="bg-navy/80 text-white text-xs font-semibold px-3 py-1 rounded-full">Crown Reduction</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 flex flex-wrap gap-3 justify-center sm:justify-between items-center">
+        <p class="text-white/60 text-sm">Tap the left image to watch our team in action</p>
+        <a href="#contact" class="bg-mint text-navy font-bold text-sm px-5 py-2.5 rounded-full hover:bg-green-400 transition-colors">
+          Book a Survey →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+  7. SPLIT FEATURE — dark navy bg
+═══════════════════════════════════════════════ -->
+<section class="bg-navy-dark py-24 px-5 sm:px-8 overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Top split: image left, text right -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+
+      <!-- Left: image with badges -->
+      <div class="relative flex justify-center">
+        <div class="relative w-full max-w-md">
+          <div class="rounded-2xl overflow-hidden shadow-2xl" style="height: 420px;">
+            <img
+              src="https://images.pexels.com/photos/1612461/pexels-photo-1612461.jpeg?auto=compress&cs=tinysrgb&w=800&q=80"
+              alt="Forest and outdoor work"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- Top-left badge: Emergency -->
+          <div class="floating-card absolute top-5 -left-4 z-10">
+            <div class="flex items-center gap-2.5">
+              <div class="w-9 h-9 rounded-full bg-yellow-400 flex items-center justify-center text-base">⚡</div>
+              <div>
+                <div class="text-xs text-gray-400 font-medium">Emergency</div>
+                <div class="text-navy font-bold text-sm">2hr response time</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lower badge: Insured -->
+          <div class="floating-card absolute bottom-12 -right-4 z-10">
+            <div class="flex items-center gap-2.5">
+              <div class="w-9 h-9 rounded-full bg-soft-bg flex items-center justify-center text-base">🛡</div>
+              <div>
+                <div class="text-xs text-gray-400 font-medium">Coverage</div>
+                <div class="text-navy font-bold text-sm">Fully Insured</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: text -->
+      <div class="flex flex-col gap-6">
+        <h2 class="section-h2 text-white">Say hello to stress-free tree care</h2>
+        <p class="text-white/70 text-lg leading-relaxed">
+          Our certified arborists handle everything — from emergency storm damage to planned crown reductions. One call, one team, zero stress.
+        </p>
+        <a href="#contact" class="self-start inline-flex items-center gap-2 border-2 border-white text-white font-bold text-base px-7 py-3.5 rounded-full hover:bg-white/10 transition-colors">
+          Find Out More
+        </a>
+      </div>
+    </div>
+
+    <!-- Stats card -->
+    <div class="bg-navy rounded-2xl p-8 sm:p-12">
+      <p class="text-center text-white font-semibold text-lg mb-10">With TreePro our clients see:</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+        <div>
+          <div class="text-5xl sm:text-6xl font-extrabold text-mint mb-2">500+</div>
+          <div class="text-white/70 font-medium">Trees Removed</div>
+        </div>
+        <div class="sm:border-x border-white/10">
+          <div class="text-5xl sm:text-6xl font-extrabold text-mint mb-2">4.9★</div>
+          <div class="text-white/70 font-medium">Average Rating</div>
+        </div>
+        <div>
+          <div class="text-5xl sm:text-6xl font-extrabold text-mint mb-2">100%</div>
+          <div class="text-white/70 font-medium">Safe Completion</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+  8. ACCORDION — Why TreePro?
+═══════════════════════════════════════════════ -->
+<section id="reviews" class="bg-navy py-24 px-5 sm:px-8 overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+      <!-- Left: accordion -->
+      <div class="flex flex-col gap-8">
+        <h2 class="section-h2 text-white">Why TreePro tree surgery?</h2>
+
+        <!-- Accordion items -->
+        <div class="flex flex-col gap-3" id="accordion">
+
+          <div class="accordion-item border border-white/15 rounded-2xl overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between text-left px-6 py-5 text-white font-bold text-lg hover:bg-white/5 transition-colors">
+              <span>Safe & Efficient Tree Removal</span>
+              <svg class="accordion-chevron w-5 h-5 text-mint flex-shrink-0 transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+              </svg>
+            </button>
+            <div class="accordion-body">
+              <div class="px-6 pb-5 text-white/65 leading-relaxed">
+                From single trees to complex multi-stem removals, our team uses industry-standard rigging techniques to ensure every felled tree comes down safely — protecting your property, your family, and our crew. We carry full public liability insurance up to £5 million.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item border border-white/15 rounded-2xl overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between text-left px-6 py-5 text-white font-bold text-lg hover:bg-white/5 transition-colors">
+              <span>Crown Reduction & Shaping</span>
+              <svg class="accordion-chevron w-5 h-5 text-mint flex-shrink-0 transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+              </svg>
+            </button>
+            <div class="accordion-body">
+              <div class="px-6 pb-5 text-white/65 leading-relaxed">
+                Careful crown reduction maintains the natural shape and health of your tree while reducing its size, weight, and wind resistance. Our ISA-certified arborists understand tree biology — no topping, no butchering. Just clean, sympathetic pruning that keeps your trees thriving for years to come.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item border border-white/15 rounded-2xl overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between text-left px-6 py-5 text-white font-bold text-lg hover:bg-white/5 transition-colors">
+              <span>24/7 Emergency Response</span>
+              <svg class="accordion-chevron w-5 h-5 text-mint flex-shrink-0 transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+              </svg>
+            </button>
+            <div class="accordion-body">
+              <div class="px-6 pb-5 text-white/65 leading-relaxed">
+                Storm damage doesn't wait for business hours. Our emergency callout team is available around the clock, 365 days a year, with a guaranteed 2-hour response time to your location. Whether it's a fallen limb on a roof or a blocked road, we'll be there fast.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right: pentagon image + floating cards -->
+      <div class="relative flex justify-center lg:justify-end">
+        <div class="relative" style="width: 380px; max-width: 100%;">
+          <div class="penta-clip overflow-hidden" style="height: 420px; width: 100%;">
+            <img
+              src="https://images.pexels.com/photos/347134/pexels-photo-347134.jpeg?auto=compress&cs=tinysrgb&w=800&q=80"
+              alt="Green tree leaf"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- Floating card 1 -->
+          <div class="floating-card absolute bottom-10 -left-4 z-10 min-w-max">
+            <div class="flex items-center gap-2">
+              <span class="text-mint font-bold text-lg">✓</span>
+              <div>
+                <div class="text-xs text-gray-400">Status update</div>
+                <div class="text-navy font-bold text-sm">All clear — Tree removed safely</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating card 2: stars -->
+          <div class="floating-card absolute top-20 -right-4 z-10">
+            <div class="text-xs text-gray-400 mb-1">Customer review</div>
+            <div class="flex text-yellow-400 text-lg">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+  9. SERVICES TABS
+═══════════════════════════════════════════════ -->
+<section id="services" class="bg-soft-bg py-24 px-5 sm:px-8">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="text-center mb-12">
+      <h2 class="section-h2 text-navy mb-4">Your complete tree care solution</h2>
+      <p class="text-gray-500 text-lg max-w-2xl mx-auto">From full removals to precision pruning — we cover every aspect of tree care with the same dedication to safety and quality.</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex flex-wrap justify-center gap-3 mb-10" id="tab-buttons">
+      <button data-tab="removal" class="tab-btn active-tab bg-navy text-white font-bold text-sm px-6 py-2.5 rounded-full transition-all">Tree Removal</button>
+      <button data-tab="crown" class="tab-btn border-2 border-navy text-navy font-bold text-sm px-6 py-2.5 rounded-full hover:bg-navy hover:text-white transition-all">Crown Work</button>
+      <button data-tab="stump" class="tab-btn border-2 border-navy text-navy font-bold text-sm px-6 py-2.5 rounded-full hover:bg-navy hover:text-white transition-all">Stump Grinding</button>
+    </div>
+
+    <!-- Tab panels -->
+
+    <!-- Tree Removal -->
+    <div id="tab-removal" class="tab-panel active grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div class="flex flex-col gap-5">
+        <div class="flex gap-4">
+          <div class="w-1 rounded-full bg-mint flex-shrink-0 self-stretch"></div>
+          <div>
+            <h3 class="text-navy font-extrabold text-2xl mb-3">Complete Tree Removal</h3>
+            <p class="text-gray-500 leading-relaxed mb-4">
+              Whether it's a dead tree posing a hazard, a tree that's outgrown its space, or storm damage that needs urgent attention — we handle every removal safely and efficiently.
+            </p>
+            <ul class="flex flex-col gap-2">
+              <li class="flex items-center gap-2 text-gray-600 text-sm"><span class="text-mint font-bold">✓</span> Full tree felling and sectional dismantling</li>
+              <li class="flex items-center gap-2 text-gray-600 text-sm"><span class="text-mint font-bold">✓</span> Emergency callout available 24/7</li>
+              <li class="flex items-center gap-2 text-gray-600 text-sm"><span class="text-mint font-bold">✓</span> All arisings removed and site cleared</li>
+              <li class="flex items-center gap-2 text-gray-600 text-sm"><span class="text-mint font-bold">✓</span> TPO and conservation area work arranged</li>
+            </ul>
+            <a href="#contact" class="inline-flex mt-5 items-center gap-2 bg-mint text-navy font-bold text-sm px-6 py-3 rounded-full hover:bg-green-400 transition-colors">
+              Get a Quote →
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden shadow-xl" style="height: 340px;">
+        <img
+          src="https://images.pexels.com/photos/1005644/pexels-photo-1005644.jpeg?auto=compress&cs=tinysrgb&w=800&q=80"
+          alt="Tree removal"
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+
+    <!-- Crown Work -->
+    <div id="tab-crown" class="tab-panel grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div class="flex flex-col gap-5">
+        <div class="flex gap-4">
+          <div class="w-1 rounded-full bg-mint flex-shrink-0 self-stretch"></div>
+          <div>
+            <h3 class="text-navy font-extrabold text-2xl mb-3">Crown Reduction & Shaping</h3>
+            <p class="text-gray-500 leading-relaxed mb-4">
+              Keep your trees healthy, balanced, and the right size with expert crown management. Our arborists use sympathetic pruning techniques that respect the tree's natural growth pattern.
+            </p>
+            <ul class="flex flex-col gap-2">
+              <li class="flex items-center gap-2 text-gray-600 text-sm"><span class="text-mint font-bold">✓</span> Crown thinning, lifting and reduction</li>
+              <li class="flex items-center gap-2 text-gray-600 text-sm"><span class="text-mint font-bold">✓</span> Deadwood removal and hazard assessment</li>
+              <li class="flex items-center gap-2 text-gray-600 text-sm"><span class="text-mint font-bold">✓</span> Hedge and shrub management</li>
+              <li class="flex items-center gap-2 text-gray-600 text-sm"><span class="text-mint font-bold">✓</span> Annual maintenance programmes available</li>
+            </ul>
+            <a href="#contact" class="inline-flex mt-5 items-center gap-2 bg-mint text-navy font-bold text-sm px-6 py-3 rounded-full hover:bg-green-400 transition-colors">
+              Get a Quote →
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden shadow-xl" style="height: 340px;">
+        <img
+          src="https://images.pexels.com/photos/347134/pexels-photo-347134.jpeg?auto=compress&cs=tinysrgb&w=800&q=80"
+          alt="Crown work"
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+
+    <!-- Stump Grinding -->
+    <div id="tab-stump" class="tab-panel grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div class="flex flex-col gap-5">
+        <div class="flex gap-4">
+          <div class="w-1 rounded-full bg-mint flex-shrink-0 self-stretch"></div>
+          <div>
+            <h3 class="text-navy font-extrabold text-2xl mb-3">Stump Grinding & Removal</h3>
+            <p class="text-gray-500 leading-relaxed mb-4">
+              Eliminate unsightly stumps quickly and cleanly with our stump grinding service. We grind stumps down below ground level so you can turf, pave or plant over the area with ease.
+            </p>
+            <ul class="flex flex-col gap-2">
+              <li class="flex items-center gap-2 text-gray-600 text-sm"><span class="text-mint font-bold">✓</span> Stumps ground 150–300mm below soil level</li>
+              <li class="flex items-center gap-2 text-gray-600 text-sm"><span class="text-mint font-bold">✓</span> Arisings can be removed or used as mulch</li>
+              <li class="flex items-center gap-2 text-gray-600 text-sm"><span class="text-mint font-bold">✓</span> Access to all garden sizes</li>
+              <li class="flex items-center gap-2 text-gray-600 text-sm"><span class="text-mint font-bold">✓</span> Ready to replant or landscape immediately</li>
+            </ul>
+            <a href="#contact" class="inline-flex mt-5 items-center gap-2 bg-mint text-navy font-bold text-sm px-6 py-3 rounded-full hover:bg-green-400 transition-colors">
+              Get a Quote →
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden shadow-xl" style="height: 340px;">
+        <img
+          src="https://images.pexels.com/photos/167698/pexels-photo-167698.jpeg?auto=compress&cs=tinysrgb&w=800&q=80"
+          alt="Stump grinding"
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+  10. CONTACT / CTA SECTION
+═══════════════════════════════════════════════ -->
+<section id="contact" class="bg-white py-24 px-5 sm:px-8">
+  <div class="max-w-3xl mx-auto text-center">
+
+    <h2 class="section-h2 text-navy mb-4">Ready to transform your outdoor space?</h2>
+    <p class="text-gray-500 text-lg mb-8 max-w-xl mx-auto">
+      Get your FREE tree survey — no obligation. We'll assess your trees and provide a written quote within 24 hours.
+    </p>
+    <a href="#contact-form" class="inline-flex items-center gap-2 bg-mint text-navy font-bold text-lg px-9 py-4 rounded-full hover:bg-green-400 transition-colors shadow-lg mb-14">
+      Book Free Survey →
+    </a>
+
+    <!-- Form -->
+    <div id="contact-form" class="bg-soft-bg rounded-3xl p-8 sm:p-10 text-left shadow-sm">
+      <h3 class="text-navy font-extrabold text-xl mb-6">Send us a message</h3>
+      <form class="flex flex-col gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1.5">
+            <label class="text-navy font-semibold text-sm">Full Name</label>
+            <input type="text" placeholder="Jane Smith" class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-navy/30 bg-white" />
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="text-navy font-semibold text-sm">Phone Number</label>
+            <input type="tel" placeholder="07700 000 000" class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-navy/30 bg-white" />
+          </div>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <label class="text-navy font-semibold text-sm">Email Address</label>
+          <input type="email" placeholder="jane@example.com" class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-navy/30 bg-white" />
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <label class="text-navy font-semibold text-sm">Tell us about your trees</label>
+          <textarea rows="4" placeholder="Describe what you need — e.g. 'Large oak near house, want a survey and quote for removal...'" class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-navy/30 bg-white resize-none"></textarea>
+        </div>
+        <button type="submit" class="self-start bg-navy text-white font-bold text-sm px-8 py-3.5 rounded-full hover:bg-navy-dark transition-colors shadow-sm mt-2">
+          Send Message →
+        </button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+  11. FOOTER
+═══════════════════════════════════════════════ -->
+<footer id="areas" class="bg-navy-dark text-white pt-16 pb-8 px-5 sm:px-8">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
+
+      <!-- Col 1: Logo + blurb -->
+      <div class="flex flex-col gap-4">
+        <div class="flex items-center gap-2.5">
+          <svg class="w-8 h-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="16" fill="white" opacity="0.1"/>
+            <path d="M16 4C16 4 8 10 8 17a8 8 0 0 0 7 7.94V28h2v-3.06A8 8 0 0 0 24 17C24 10 16 4 16 4z" fill="white"/>
+            <path d="M16 14v14" stroke="#5CE87F" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M16 18l-3-3" stroke="#5CE87F" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M16 21l3-3" stroke="#5CE87F" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span class="font-extrabold text-xl tracking-tight">TreePro</span>
+        </div>
+        <p class="text-white/55 text-sm leading-relaxed">
+          ISA Certified arborists providing safe, professional tree surgery to homeowners and local authorities. Fully insured, guaranteed work.
+        </p>
+        <div class="flex gap-3 mt-1">
+          <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" aria-label="Facebook">
+            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" aria-label="Instagram">
+            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2: Services -->
+      <div>
+        <h4 class="font-bold text-sm uppercase tracking-widest mb-5 text-white/80">Services</h4>
+        <ul class="flex flex-col gap-2.5">
+          <li><a href="#services" class="text-white/55 hover:text-white text-sm transition-colors">Tree Removal</a></li>
+          <li><a href="#services" class="text-white/55 hover:text-white text-sm transition-colors">Crown Reduction</a></li>
+          <li><a href="#services" class="text-white/55 hover:text-white text-sm transition-colors">Stump Grinding</a></li>
+          <li><a href="#services" class="text-white/55 hover:text-white text-sm transition-colors">Emergency Callout</a></li>
+          <li><a href="#services" class="text-white/55 hover:text-white text-sm transition-colors">Hedge Management</a></li>
+          <li><a href="#services" class="text-white/55 hover:text-white text-sm transition-colors">Tree Surveys & Reports</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Company -->
+      <div>
+        <h4 class="font-bold text-sm uppercase tracking-widest mb-5 text-white/80">Company</h4>
+        <ul class="flex flex-col gap-2.5">
+          <li><a href="#about" class="text-white/55 hover:text-white text-sm transition-colors">About Us</a></li>
+          <li><a href="#reviews" class="text-white/55 hover:text-white text-sm transition-colors">Customer Reviews</a></li>
+          <li><a href="#areas" class="text-white/55 hover:text-white text-sm transition-colors">Areas We Cover</a></li>
+          <li><a href="#contact" class="text-white/55 hover:text-white text-sm transition-colors">Contact</a></li>
+          <li><a href="#" class="text-white/55 hover:text-white text-sm transition-colors">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Certifications -->
+      <div>
+        <h4 class="font-bold text-sm uppercase tracking-widest mb-5 text-white/80">Certifications</h4>
+        <ul class="flex flex-col gap-3">
+          <li class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-full bg-mint/20 flex items-center justify-center flex-shrink-0">
+              <svg class="w-3.5 h-3.5 text-mint" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <span class="text-white/55 text-sm">ISA Certified Arborist</span>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-full bg-mint/20 flex items-center justify-center flex-shrink-0">
+              <svg class="w-3.5 h-3.5 text-mint" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <span class="text-white/55 text-sm">NPTC Qualified</span>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-full bg-mint/20 flex items-center justify-center flex-shrink-0">
+              <svg class="w-3.5 h-3.5 text-mint" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <span class="text-white/55 text-sm">Arboricultural Association</span>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-full bg-mint/20 flex items-center justify-center flex-shrink-0">
+              <svg class="w-3.5 h-3.5 text-mint" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <span class="text-white/55 text-sm">TrustMark Registered</span>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-full bg-mint/20 flex items-center justify-center flex-shrink-0">
+              <svg class="w-3.5 h-3.5 text-mint" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <span class="text-white/55 text-sm">Checkatrade Approved</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <p class="text-white/40 text-sm">© 2026 TreePro. All rights reserved.</p>
+      <div class="flex gap-5">
+        <a href="#" class="text-white/40 hover:text-white/70 text-sm transition-colors">Privacy Policy</a>
+        <a href="#" class="text-white/40 hover:text-white/70 text-sm transition-colors">Terms of Service</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════
+  JAVASCRIPT
+═══════════════════════════════════════════════ -->
+<script>
+  // ── Mobile menu toggle ──────────────────────────
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+  });
+
+  // ── Nav shadow on scroll ────────────────────────
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('main-nav');
+    if (window.scrollY > 10) {
+      nav.style.boxShadow = '0 2px 20px rgba(27,43,139,0.08)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+  });
+
+  // ── Accordion ───────────────────────────────────
+  document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('.accordion-item');
+      const body = item.querySelector('.accordion-body');
+      const chevron = trigger.querySelector('.accordion-chevron');
+      const isOpen = body.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('open'));
+      document.querySelectorAll('.accordion-chevron').forEach(c => c.style.transform = 'rotate(0deg)');
+
+      // Open clicked if it was closed
+      if (!isOpen) {
+        body.classList.add('open');
+        chevron.style.transform = 'rotate(90deg)';
+      }
+    });
+  });
+
+  // ── Tabs ────────────────────────────────────────
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetTab = btn.dataset.tab;
+
+      // Update buttons
+      tabButtons.forEach(b => {
+        b.classList.remove('active-tab', 'bg-navy', 'text-white');
+        b.classList.add('border-2', 'border-navy', 'text-navy');
+      });
+      btn.classList.add('active-tab', 'bg-navy', 'text-white');
+      btn.classList.remove('border-2', 'border-navy', 'text-navy');
+
+      // Update panels
+      tabPanels.forEach(panel => panel.classList.remove('active'));
+      const target = document.getElementById('tab-' + targetTab);
+      if (target) target.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
